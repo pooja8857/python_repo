@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% extends 'testapp/base.html' %}
+    {% block body_block %}
+        <h1>Student Registration Form</h1>
+        <form method="post">
+            {{form.as_p}}
+            {% csrf_token %}
+            <input type="submit" class="btn btn-primary" value="INSERT">
+        </form><br><br>
+        {% if stud_list %}
+            <table border="1">
+                <thead>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Marks</th>
+                    <th>Subject</th>
+                    <th>Action</th>
+                </thead>
+                {% for stud in stud_list %}
+                    <tbody>
+                        <td>{{stud.name}}</td>
+                        <td>{{stud.age}}</td>
+                        <td>{{stud.marks}}</td>
+                        <td>{{stud.subject}}</td>
+                        <td>
+                            <a href="/update/{{stud.id}}">UPDATE</a>
+                            <a href="/delete/{{stud.id}}">DELETE</a>
+                        </td>
+                    </tbody>
+                {% endfor %}
+            </table>
+        {% else %}
+            <p>No Records Available...</p>
+        {% endif %}
+        {% endblock %}

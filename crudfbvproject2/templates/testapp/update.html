@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% extends 'testapp/base.html' %}
+    {% block body_block %}
+        <h1>Update Information Form</h1>
+        <form method="post">
+            {% csrf_token %}
+            Name = <input type="text" name="name" value="{{stud.name}}"><br><br>
+            Age = <input type="text" name="age" value="{{stud.age}}"><br><br>
+            Marks = <input type="text" name="marks" value="{{stud.marks}}"><br><br>
+            Subject = <input type="text" name="subject" value="{{stud.subject}}"><br><br>
+            <input type="submit" class="btn btn-primary" value="UPDATE">
+        </form>
+
+        {% endblock %}
